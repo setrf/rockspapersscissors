@@ -53,5 +53,52 @@ h1 { margin: 0 0 12px; }
 
 .result {
   font-weight: bold;
-  color: var(--accent);
+}
+
+.winner {
+  color: #2ecc71; /* green */
+  animation: bounce 0.5s ease;
+}
+
+.loser {
+  color: #e74c3c; /* red */
+  animation: shake 0.5s ease;
+}
+
+.draw {
+  color: #f1c40f; /* yellow */
+}
+
+.choice-animation {
+  animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
 }

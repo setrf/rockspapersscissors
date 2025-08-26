@@ -11,17 +11,7 @@ let computerScore = 0;
 const choicesMap = {
   rock: '✊',
   paper: '✋',
-  scissors: '✌️',
-  lizard: '🦎',
-  spock: '🖖'
-};
-
-const rules = {
-  rock: ['scissors', 'lizard'],
-  paper: ['rock', 'spock'],
-  scissors: ['paper', 'lizard'],
-  lizard: ['spock', 'paper'],
-  spock: ['scissors', 'rock']
+  scissors: '✌️'
 };
 
 choices.forEach(choice => {
@@ -30,14 +20,20 @@ choices.forEach(choice => {
     const computerChoice = getComputerChoice();
     const winner = getWinner(playerChoice, computerChoice);
 
-    playerChoiceDisplay.textContent = `Your choice: ${choicesMap[playerChoice]}`;
-    computerChoiceDisplay.textContent = `Computer's choice: ${choicesMap[computerChoice]}`;
+    playerChoiceDisplay.innerHTML = `<span class="choice-animation">${choicesMap[playerChoice]}</span>`;
+    computerChoiceDisplay.innerHTML = `<span class="choice-animation">${choicesMap[computerChoice]}</span>`;
+
     resultDisplay.textContent = winner;
+    resultDisplay.classList.remove('winner', 'loser', 'draw');
 
     if (winner === 'You win!') {
       playerScore++;
+      resultDisplay.classList.add('winner');
     } else if (winner === 'You lose!') {
       computerScore++;
+      resultDisplay.classList.add('loser');
+    } else {
+      resultDisplay.classList.add('draw');
     }
 
     playerScoreDisplay.textContent = `Player: ${playerScore}`;
@@ -46,7 +42,7 @@ choices.forEach(choice => {
 });
 
 function getComputerChoice() {
-  const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+  const choices = ['rock', 'paper', 'scissors'];
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
 }
@@ -56,7 +52,11 @@ function getWinner(player, computer) {
     return "It's a draw!";
   }
 
-  if (rules[player].includes(computer)) {
+  if (
+    (player === 'rock' && computer === 'scissors') ||
+    (player === 'paper' && computer === 'rock') ||
+    (player === 'scissors' && computer === 'paper')
+  ) {
     return 'You win!';
   } else {
     return 'You lose!';
