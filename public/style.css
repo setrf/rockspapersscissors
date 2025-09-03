@@ -37,8 +37,41 @@ h1 { margin: 0 0 12px; }
   transition: transform 0.2s;
 }
 
+.choice:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
 .choice:hover {
   transform: scale(1.2);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin: 6px 0 10px;
+}
+
+#reset {
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--fg);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#reset:hover, #reset:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .results {

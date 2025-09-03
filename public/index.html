@@ -17,14 +17,18 @@
         </div>
       </div>
       <div class="choices">
-        <button class="choice" data-choice="rock">✊</button>
-        <button class="choice" data-choice="paper">✋</button>
-        <button class="choice" data-choice="scissors">✌️</button>
+        <button class="choice" type="button" data-choice="rock" aria-label="Rock" title="Rock">✊</button>
+        <button class="choice" type="button" data-choice="paper" aria-label="Paper" title="Paper">✋</button>
+        <button class="choice" type="button" data-choice="scissors" aria-label="Scissors" title="Scissors">✌️</button>
+      </div>
+      <div class="controls">
+        <button id="reset" type="button" aria-label="Reset scores">Reset</button>
+        <div class="hint" aria-hidden="true">Keys: R, P, S or 1, 2, 3</div>
       </div>
       <div class="results">
         <div class="player-choice"></div>
         <div class="computer-choice"></div>
-        <div class="result"></div>
+        <div class="result" role="status" aria-live="polite"></div>
       </div>
     </main>
     <script src="./script.js"></script>
